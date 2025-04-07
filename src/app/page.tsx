@@ -1,101 +1,45 @@
-import Image from "next/image";
+import { Suspense } from 'react';
+import MandalaEditorWrapper from '@/components/MandalaChart/MandalaEditorWrapper';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="container mx-auto px-4 py-8">
+      <header className="text-center mb-10">
+        <h1 className="text-3xl font-bold mb-2">マンダラチャート</h1>
+        <p className="text-gray-600">
+          目標達成のための計画立てに役立つマンダラチャートを作成しましょう
+        </p>
+      </header>
+      
+      <Suspense fallback={<div>読み込み中...</div>}>
+        <MandalaEditorWrapper />
+      </Suspense>
+      
+      <section className="mt-12 bg-white p-6 rounded-lg shadow-sm">
+        <h2 className="text-2xl font-bold mb-4">マンダラチャートとは？</h2>
+        <p className="mb-4">
+          マンダラチャートは9×9のマス目で構成された目標達成のためのフレームワークです。
+          中央に主要な目標を置き、その周囲に8つのサブテーマを配置することで、
+          全体像を俯瞰しながら細部まで計画を立てることができます。
+        </p>
+        <p className="mb-4">
+          プロ野球選手の大谷翔平選手も高校時代に使用していたことで知られており、
+          目標を視覚化し、具体的な行動計画に落とし込むのに非常に効果的なツールです。
+        </p>
+        <div className="bg-blue-50 p-4 rounded">
+          <h3 className="font-bold mb-2">マンダラチャートの使い方</h3>
+          <ol className="list-decimal pl-5 space-y-1">
+            <li>中央のマスに最も重要な目標を書きます</li>
+            <li>周囲8つのマスに、その目標を達成するためのサブテーマを書きます</li>
+            <li>各サブテーマを中心とした9マスに、さらに具体的な行動計画を書きます</li>
+            <li>完成したマンダラチャートを定期的に見返し、進捗を確認します</li>
+          </ol>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      <footer className="mt-12 text-center text-gray-500 text-sm py-4">
+        <p>© 2025 マンダラチャートアプリ</p>
       </footer>
-    </div>
+    </main>
   );
 }
